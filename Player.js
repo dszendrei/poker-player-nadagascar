@@ -95,6 +95,7 @@ class Player {
       }
     }
 
+    console.log("Our actual bet: " + myBet);
     bet(myBet);
   }
 
