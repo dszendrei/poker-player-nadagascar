@@ -8,6 +8,7 @@ class Player {
     let ourCards = me.hole_cards;
     let communityCards = gameState.community_cards;
     let isThereAPair=this.isThereAPair(ourCards, communityCards);
+    let isThereADoublePair = this.isThereADoublePair(ourCards, communityCards);
     let isThereDrill = this.isThereDrill(ourCards, communityCards);
     let myBet = 0;
 
@@ -23,6 +24,7 @@ class Player {
     }
 
     console.log("Is there a pair?: " + isThereAPair);
+    console.log("Is there a double pair?: " + isThereADoublePair);
     console.log("Is there a drill?: " + isThereDrill);
 
 
