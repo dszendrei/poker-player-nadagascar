@@ -16,10 +16,12 @@ class Player {
     console.log("Community cards: " + communityCards);
 
     for(let communityCard of communityCards){
-      if(myCards[0].rank == communityCard.rank || myCards[1].rank == communityCard.rank){
+      if(myCards[0].rank === communityCard.rank || myCards[1].rank === communityCard.rank){
         isThereAPair = true;
       }
     }
+
+    console.log(isThereAPair);
 
 
     if (isThereAPair) {
