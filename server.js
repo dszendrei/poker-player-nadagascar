@@ -12,8 +12,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post('/', (req, res) => {
   const { action, game_state } = req.body;
   console.log(req.body);
-  console.log("THIS PLAYER:");
-  console.log(req.body["players"][2]);
+  console.log("PLAYERS:");
+  console.log(game_state["players"]);
 
 
   switch (action) {
