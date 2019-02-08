@@ -11,6 +11,18 @@ class Player {
     let isThereADoublePair = this.isThereADoublePair(ourCards, communityCards);
     let isThereDrill = this.isThereDrill(ourCards, communityCards);
     let myBet = 0;
+    if (ourCards[0].rank == "A") ourCards[0].rank = 14;
+    if (ourCards[0].rank == "K") ourCards[0].rank = 13;
+    if (ourCards[0].rank == "Q") ourCards[0].rank = 12;
+    if (ourCards[0].rank == "J") ourCards[0].rank = 11;
+    if (ourCards[0].rank == "T") ourCards[0].rank = 10;
+    if (ourCards[1].rank == "A") ourCards[1].rank = 14;
+    if (ourCards[1].rank == "K") ourCards[1].rank = 13;
+    if (ourCards[1].rank == "Q") ourCards[1].rank = 12;
+    if (ourCards[1].rank == "J") ourCards[1].rank = 11;
+    if (ourCards[1].rank == "T") ourCards[1].rank = 10;
+    ourCards[0].rank = Number(ourCards[0].rank);
+    ourCards[1].rank = Number(ourCards[1].rank);
 
     console.log("Our stack: " + gameState.players[2].stack);
     console.log("Our name: " + me.name);
