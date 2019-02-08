@@ -15,6 +15,7 @@ class Player {
     console.log("Our stack: " + gameState.players[2].stack);
     console.log("Our name: " + me.name);
     console.log("Our cards: " + ourCards[0].rank + ourCards[1].rank);
+    console.log("Our cards: " + gameState.players[2].hole_cards[0].rank + gameState.players[2].hole_cards[1].rank);
     for(let communityCard of communityCards){
       console.log("Community card: " + communityCard.rank);
     }
