@@ -50,7 +50,7 @@ class Player {
     console.log("Is there a double pair?: " + isThereADoublePair);
     console.log("Is there a drill?: " + isThereDrill);
 
-
+/*
     if (isThereAPair) {
       if (gameState.current_buy_in * 1.5 > me.stack) {
         myBet = me.stack;
@@ -62,7 +62,7 @@ class Player {
     } else {
       myBet = gameState.current_buy_in;
     }
-
+*/
     if (ourCards[1].rank < 7 && ourCards[0].rank < 7) {
       if (isThereAPair && gameState.current_buy_in < me.stack*0.3) {
         myBet = gameState.current_buy_in;
@@ -84,12 +84,15 @@ class Player {
       myBet = me.stack;
     }
 
-    if (!isThereDrill && !isThereADoublePair && !isThereAPair){
-      if (ourCards[1].rank < 7 || ourCards[0].rank < 7){
-        if (gameState.current_buy_in < me.stack * 0.1){
-          myBet = gameState.current_buy_in;
+    if (!isThereDrill && !isThereADoublePair && !isThereAPair) {
+      if (ourCards[1].rank < 7 || ourCards[0].rank < 7) {
+        if (gameState.current_buy_in < me.stack * 0.1) {
+          if (gameState.current_buy_in > gameState.small_blind * 2){
+            myBet = gameState.current_buy_in;
+          } else myBet = gameState.small_blind*2;
         }
-        if (communityCards.length > 2){
+
+        if (communityCards.length > 2) {
           myBet = 0;
         }
       }
