@@ -36,7 +36,7 @@ class Player {
     //   comcard.rank = Number(comcard.rank)
 
     for(let communityCard of communityCards){
-      communityCard.rank = this.castRankToNumber(communityCard);
+      communityCard.rank = this.castRankToNumber(communityCard.rank);
     }
 
     console.log("Our stack: " + gameState.players[2].stack);
@@ -62,7 +62,9 @@ class Player {
     } else {
       myBet = gameState.current_buy_in;
     }
+
 */
+
     if (ourCards[1].rank < 7 && ourCards[0].rank < 7) {
       if (isThereAPair && gameState.current_buy_in < me.stack*0.3) {
         myBet = gameState.current_buy_in;
@@ -133,6 +135,8 @@ class Player {
         return 3;
       case "2":
         return 2;
+      default:
+        return Number(rank)
     }
   }
 
