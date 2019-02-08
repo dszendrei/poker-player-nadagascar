@@ -40,6 +40,25 @@ class Player {
       myBet = gameState.minimum_raise;
     }
 
+    if (!isThereDrill || !isThereADoublePair || !isThereAPair){
+      if (ourCards[1].rank < 5 || ourCards[0].rank < 5){
+        if (gameState.minimum_raise < me.stack * 0.2){
+          myBet = gameState.minimum_raise;
+        }
+        if (communityCards.length > 2){
+          myBet = 0;
+        }
+      }
+    } else {
+      if (ourCards[1].rank < 5 || ourCards[0].rank < 5) {
+        if (isThereAPair && gameState.minimum_raise < me.stack*0.3) {
+          myBet = gameState.minimum_raise;
+        } else {myBet = 0}
+        if (isThereADoublePair && gameState.minimum_raise < me.stack*0.5){
+          myBet = (gameState.minimum_raise*1.5 > me.stack ? me.stack : gameState.minimum_raise*1.5);
+        }
+      }
+    }
     bet(myBet);
   }
 
