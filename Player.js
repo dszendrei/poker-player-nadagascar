@@ -62,6 +62,23 @@ class Player {
     bet(myBet);
   }
 
+
+  static chanceOfthePair(ourCards){
+    /*Winner chance of the first pair in our hands*/
+    let goodCards = ["A","K","Q","J",10,9];
+    for (let elem of goodCards){
+      if (elem == ourCards[0].rank || elem == ourCards[1].rank){
+        /* Chance is bigger than 70%*/
+
+      }else{
+        /*Chance is too small*/
+        return 0
+      }
+    }
+  }
+
+
+
   static isThereAPair(ourCards, communityCards){
     //Checks if there's a pair in our hands
     let isThereAPair = Boolean(ourCards[0].rank === ourCards[1].rank);
