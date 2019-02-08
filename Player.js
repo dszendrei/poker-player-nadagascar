@@ -21,7 +21,7 @@ class Player {
       }
     }
 
-    console.log(isThereAPair);
+    console.log("Is there a pair?: " + isThereAPair);
 
 
     if (isThereAPair) {
