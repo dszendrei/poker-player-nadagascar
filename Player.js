@@ -57,9 +57,26 @@ class Player {
 
   static isThereADoublePair(ourCards, communityCards){
     //Check if our cards match
-    let isThereADoublePair = Boolean(ourCards[0].rank !== ourCards[1].rank);
+    let identicalCardsInHand = Boolean(ourCards[0].rank === ourCards[1].rank);
+    let isThereADoublePair = false;
+    let isThereOnePair = false;
+    let isThereAnotherPair = false;
     //If not, checks if both of our cards match any other card in the community card
-    if(isThereADoublePair){}
+    if(!identicalCardsInHand){
+      for(let communityCard of communityCards){
+        if(ourCards[0].rank === communityCard.rank){
+          isThereOnePair = true;
+        }
+        if(ourCards[1].rank === communityCards){
+          isThereAnotherPair = true;
+        }
+      }
+      if(isThereOnePair && isThereAnotherPair){
+        isThereADoublePair = true;
+      }
+    }
+
+    return isThereADoublePair;
 
   }
 
