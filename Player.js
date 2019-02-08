@@ -4,10 +4,7 @@ class Player {
   }
 
   static betRequest(gameState, bet) {
-    console.log("testLog");
-    console.log("testLog");
-    console.log("testLog");
-    bet(0);
+    bet(gameState.minimum_raise);
   }
 
   static showdown(gameState) {
