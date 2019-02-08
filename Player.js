@@ -14,13 +14,9 @@ class Player {
 
     console.log("Our stack: " + gameState.players[2].stack);
     console.log("Our name: " + me.name);
-    console.log("Our cards: " + ourCards[0] + ourCards[1]);
-    console.log("Community cards: " + communityCards);
-
+    console.log("Our cards: " + ourCards[0].rank + ourCards[1].rank);
     for(let communityCard of communityCards){
-      if(ourCards[0].rank === communityCard.rank || ourCards[1].rank === communityCard.rank){
-        isThereAPair = true;
-      }
+      console.log("Community card: " + communityCard.rank);
     }
 
     console.log("Is there a pair?: " + isThereAPair);
@@ -74,6 +70,23 @@ class Player {
 
     bet(myBet);
   }
+
+
+  static chanceOfthePair(ourCards){
+    /*Winner chance of the first pair in our hands*/
+    let goodCards = ["A","K","Q","J",10,9];
+    for (let elem of goodCards){
+      if (elem == ourCards[0].rank || elem == ourCards[1].rank){
+        /* Chance is bigger than 70%*/
+
+      }else{
+        /*Chance is too small*/
+        return 0
+      }
+    }
+  }
+
+
 
   static isThereAPair(ourCards, communityCards){
     //Checks if there's a pair in our hands
