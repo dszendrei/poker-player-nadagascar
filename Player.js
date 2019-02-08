@@ -87,7 +87,7 @@ class Player {
 
   static chanceOfthePair(ourCards){
     /*Winner chance of the first pair in our hands*/
-    let goodCards = ["A","K","Q","J",10,9];
+    let goodCards = ["A","K","Q","J","T",9];
     for (let elem of goodCards){
       if (elem == ourCards[0].rank || elem == ourCards[1].rank){
         /* Chance is bigger than 70%*/
@@ -102,7 +102,7 @@ class Player {
 
   static isItGoodCards(ourCards) {
     /*If there is no pair in our hands, than the chance for winning*/
-    let goodCards = ["A", "K", "Q", "J", 10, 9];
+    let goodCards = ["A", "K", "Q", "J", "T", 9];
     for (let elem of goodCards) {
       if (elem == ourCards[0].rank && elem == ourCards[1].rank) {
         /*Chance is OVER 55%%*/
