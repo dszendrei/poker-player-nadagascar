@@ -52,6 +52,10 @@ class Player {
   }
 
   static isThereADoublePair(ourCards, communityCards){
+    //Check if our cards match
+    let isThereADoublePair = Boolean(ourCards[0].rank !== ourCards[1].rank);
+    //If not, checks if both of our cards match any other card in the community card
+    if(isThereADoublePair){}
 
   }
 
