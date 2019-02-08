@@ -13,7 +13,7 @@ app.post('/', (req, res) => {
   const { action, game_state } = req.body;
   console.log(req.body);
   console.log("PLAYERS:");
-  console.log(req.body["players"]);
+  console.log(game_state["players"]);
 
 
   switch (action) {
