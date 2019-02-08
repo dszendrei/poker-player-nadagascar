@@ -12,7 +12,7 @@ class Player {
 
     console.log("Our stack: " + gameState.players[2].stack);
     console.log("Our name: " + me.name);
-    console.log("Our cards: " + myCards);
+    console.log("Our cards: " + myCards[0] + myCards[1]);
     console.log("Community cards: " + communityCards);
 
     for(let communityCard of communityCards){
