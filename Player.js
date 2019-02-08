@@ -5,18 +5,18 @@ class Player {
 
   static betRequest(gameState, bet) {
     let me = gameState.players[2];
-    let myCards = me.hole_cards;
+    let ourCards = me.hole_cards;
     let communityCards = gameState.community_cards;
-    let isThereAPair=this.isThereAPair(myCards, communityCards);
+    let isThereAPair=this.isThereAPair(ourCards, communityCards);
     let myBet = 0;
 
     console.log("Our stack: " + gameState.players[2].stack);
     console.log("Our name: " + me.name);
-    console.log("Our cards: " + myCards[0] + myCards[1]);
+    console.log("Our cards: " + ourCards[0] + ourCards[1]);
     console.log("Community cards: " + communityCards);
 
     for(let communityCard of communityCards){
-      if(myCards[0].rank === communityCard.rank || myCards[1].rank === communityCard.rank){
+      if(ourCards[0].rank === communityCard.rank || ourCards[1].rank === communityCard.rank){
         isThereAPair = true;
       }
     }
@@ -39,11 +39,11 @@ class Player {
 
   static isThereAPair(ourCards, communityCards){
     //Checks if there's a pair in our hands
-    let isThereAPair = Boolean(myCards[0].rank === myCards[1].rank);
+    let isThereAPair = Boolean(ourCards[0].rank === ourCards[1].rank);
 
     //Checks if any of our cards match any card from the community cards
     for(let communityCard of communityCards){
-      if(myCards[0].rank === communityCard.rank || myCards[1].rank === communityCard.rank){
+      if(ourCards[0].rank === communityCard.rank || ourCards[1].rank === communityCard.rank){
         isThereAPair = true;
       }
     }
