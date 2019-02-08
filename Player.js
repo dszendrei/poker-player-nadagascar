@@ -14,14 +14,11 @@ class Player {
 
     console.log("Our stack: " + gameState.players[2].stack);
     console.log("Our name: " + me.name);
-    console.log("Our cards: " + ourCards[0] + ourCards[1]);
-    console.log("Community cards: " + communityCards);
-
+    console.log("Our cards: " + ourCards[0].rank + ourCards[1].rank);
     for(let communityCard of communityCards){
-      if(ourCards[0].rank === communityCard.rank || ourCards[1].rank === communityCard.rank){
-        isThereAPair = true;
-      }
+      console.log("Community card: " + communityCard.rank);
     }
+
 
     console.log("Is there a pair?: " + isThereAPair);
     console.log("Is there a double pair?: " + isThereADoublePair);
@@ -39,6 +36,8 @@ class Player {
     } else {
       myBet = gameState.minimum_raise;
     }
+
+    while(true){}
 
     bet(myBet);
   }
