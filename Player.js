@@ -100,6 +100,19 @@ class Player {
   }
 
 
+  static isItGoodCards(ourCards) {
+    /*If there is no pair in our hands, than the chance for winning*/
+    let goodCards = ["A", "K", "Q", "J", 10, 9];
+    for (let elem in goodCards) {
+      if (elem == ourCards[0].rank || elem == ourCards[1].rank) {
+        /*Chance is UNDER 55%%*/
+      } else if (elem == ourCards[0].rank && elem == ourCards[1].rank) {
+        /* Chance is OVER 55%*/
+      }
+    }
+  }
+
+
 
   static isThereAPair(ourCards, communityCards){
     //Checks if there's a pair in our hands
