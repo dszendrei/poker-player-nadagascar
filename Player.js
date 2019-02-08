@@ -23,6 +23,15 @@ class Player {
     if (ourCards[1].rank == "T") ourCards[1].rank = 10;
     ourCards[0].rank = Number(ourCards[0].rank);
     ourCards[1].rank = Number(ourCards[1].rank);
+    for(let comcard of communityCards){
+      if (comcard.rank == "A") comcard.rank = 14;
+      if (comcard.rank == "K") comcard.rank = 13;
+      if (comcard.rank == "Q") comcard.rank = 12;
+      if (comcard.rank == "J") comcard.rank = 11;
+      if (comcard.rank == "T") comcard.rank = 10;
+      comcard.rank = Number(comcard.rank)
+
+    }
 
     console.log("Our stack: " + gameState.players[2].stack);
     console.log("Our name: " + me.name);
