@@ -57,7 +57,7 @@ class Player {
       myBet = me.stack;
     }
 
-    if (!isThereDrill || !isThereADoublePair || !isThereAPair){
+    if (!isThereDrill && !isThereADoublePair && !isThereAPair){
       if (ourCards[1].rank < 7 || ourCards[0].rank < 7){
         if (gameState.minimum_raise < me.stack * 0.1){
           myBet = gameState.minimum_raise;
