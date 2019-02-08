@@ -132,6 +132,8 @@ class Player {
         return 3;
       case "2":
         return 2;
+      default:
+        return Number(rank)
     }
   }
 
@@ -172,7 +174,6 @@ class Player {
     } else {
       return 0;
     }
-
   }
 
 
