@@ -92,6 +92,9 @@ class Player {
       if(ourCards[1].rank === communityCard.rank){
         count1++;
       }
+      if(ourCards[0].rank === ourCards[1].rank && ourCards[1].rank === communityCard.rank) {
+        return true;
+      }
     }
     return (count1 === 2 || count0 === 2)
   }
