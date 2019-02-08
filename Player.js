@@ -8,6 +8,7 @@ class Player {
     let ourCards = me.hole_cards;
     let communityCards = gameState.community_cards;
     let isThereAPair=this.isThereAPair(ourCards, communityCards);
+    let isThereDrill = this.isThereDrill(ourCards, communityCards);
     let myBet = 0;
 
     console.log("Our stack: " + gameState.players[2].stack);
@@ -30,6 +31,8 @@ class Player {
       } else {
         myBet = gameState.minimum_raise * 1.5;
       }
+    } else if (isThereDrill) {
+      myBet = me.stack;
     } else {
       myBet = gameState.minimum_raise;
     }
@@ -57,6 +60,20 @@ class Player {
     //If not, checks if both of our cards match any other card in the community card
     if(isThereADoublePair){}
 
+  }
+
+  static isThereDrill(ourCards, communityCards){
+    let count0 = 0;
+    let count1 = 0;
+    for(let communityCard of communityCards){
+      if(ourCards[0].rank === communityCard.rank){
+        count0++;
+      }
+      if(ourCards[1].rank === communityCard.rank){
+        count1++;
+      }
+    }
+    return (count1 === 2 || count0 === 2)
   }
 
   static showdown(gameState) {
