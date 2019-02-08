@@ -23,6 +23,7 @@ class Player {
     }
 
     console.log("Is there a pair?: " + isThereAPair);
+    console.log("Is there a drill?: " + isThereDrill);
 
 
     if (isThereAPair) {
