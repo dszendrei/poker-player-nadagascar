@@ -4,27 +4,35 @@ class Player {
   }
 
   static betRequest(gameState, bet) {
-    console.log(gameState.players[2].stack);
-    bet(gameState.players[2].stack);
-
     let me = gameState.players[2];
-    console.log(me.name);
     let myCards = me.hole_cards;
-    console.log(myCards);
     let communityCards = gameState.community_cards;
-    console.log(communityCards);
-    // let myBet = 0;
+    let isThereAPair=Boolean(myCards[0].rank === myCards[1].rank);
+    let myBet = 0;
 
-    console.log(myCards[0].rank === myCards[1].rank);
-    if(myCards[0].rank === myCards[1].rank){
-      if(gameState.minimum_raise * 1.5 > me.stack){
-        bet(me.stack);
+    console.log("Our stack: " + gameState.players[2].stack);
+    console.log("Our name: " + me.name);
+    console.log("Our cards: " + myCards);
+    console.log("Community cards: " + communityCards);
+
+    for(let communityCard of communityCards){
+      if(myCards[0].rank == communityCard.rank || myCards[1].rank == communityCard.rank){
+        isThereAPair = true;
+      }
+    }
+
+
+    if (isThereAPair) {
+      if (gameState.minimum_raise * 1.5 > me.stack) {
+        myBet = me.stack;
       } else {
-        bet(gameState.minimum_raise*1.5);
+        myBet = gameState.minimum_raise * 1.5;
       }
     } else {
-      bet(10);
+      myBet = 10;
     }
+
+    bet(myBet);
   }
 
   static showdown(gameState) {
