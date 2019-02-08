@@ -11,32 +11,37 @@ class Player {
     let isThereADoublePair = this.isThereADoublePair(ourCards, communityCards);
     let isThereDrill = this.isThereDrill(ourCards, communityCards);
     let myBet = 0;
-    if (ourCards[0].rank == "A") ourCards[0].rank = 14;
-    if (ourCards[0].rank == "K") ourCards[0].rank = 13;
-    if (ourCards[0].rank == "Q") ourCards[0].rank = 12;
-    if (ourCards[0].rank == "J") ourCards[0].rank = 11;
-    if (ourCards[0].rank == "T") ourCards[0].rank = 10;
-    if (ourCards[1].rank == "A") ourCards[1].rank = 14;
-    if (ourCards[1].rank == "K") ourCards[1].rank = 13;
-    if (ourCards[1].rank == "Q") ourCards[1].rank = 12;
-    if (ourCards[1].rank == "J") ourCards[1].rank = 11;
-    if (ourCards[1].rank == "T") ourCards[1].rank = 10;
-    ourCards[0].rank = Number(ourCards[0].rank);
-    ourCards[1].rank = Number(ourCards[1].rank);
-    for(let comcard of communityCards){
-      if (comcard.rank == "A") comcard.rank = 14;
-      if (comcard.rank == "K") comcard.rank = 13;
-      if (comcard.rank == "Q") comcard.rank = 12;
-      if (comcard.rank == "J") comcard.rank = 11;
-      if (comcard.rank == "T") comcard.rank = 10;
-      comcard.rank = Number(comcard.rank)
 
+    ourCards[0].rank = this.castRankToNumber(ourCards[0].rank);
+    ourCards[1].rank = this.castRankToNumber(ourCards[1].rank);
+
+    // if (ourCards[0].rank == "A") ourCards[0].rank = 14;
+    // if (ourCards[0].rank == "K") ourCards[0].rank = 13;
+    // if (ourCards[0].rank == "Q") ourCards[0].rank = 12;
+    // if (ourCards[0].rank == "J") ourCards[0].rank = 11;
+    // if (ourCards[0].rank == "T") ourCards[0].rank = 10;
+    // if (ourCards[1].rank == "A") ourCards[1].rank = 14;
+    // if (ourCards[1].rank == "K") ourCards[1].rank = 13;
+    // if (ourCards[1].rank == "Q") ourCards[1].rank = 12;
+    // if (ourCards[1].rank == "J") ourCards[1].rank = 11;
+    // if (ourCards[1].rank == "T") ourCards[1].rank = 10;
+    // ourCards[0].rank = Number(ourCards[0].rank);
+    // ourCards[1].rank = Number(ourCards[1].rank);
+    // for(let comcard of communityCards){
+    //   if (comcard.rank == "A") comcard.rank = 14;
+    //   if (comcard.rank == "K") comcard.rank = 13;
+    //   if (comcard.rank == "Q") comcard.rank = 12;
+    //   if (comcard.rank == "J") comcard.rank = 11;
+    //   if (comcard.rank == "T") comcard.rank = 10;
+    //   comcard.rank = Number(comcard.rank)
+
+    for(let communityCard of communityCards){
+      communityCard.rank = this.castRankToNumber(communityCard);
     }
 
     console.log("Our stack: " + gameState.players[2].stack);
     console.log("Our name: " + me.name);
-    console.log("Our cards: " + ourCards[0].rank + ourCards[1].rank);
-    console.log("Our cards: " + gameState.players[2].hole_cards[0].rank + gameState.players[2].hole_cards[1].rank);
+    console.log("Our cards: " + ourCards[0].rank + " " + ourCards[1].rank);
     for(let communityCard of communityCards){
       console.log("Community card: " + communityCard.rank);
     }
@@ -92,6 +97,39 @@ class Player {
 
     bet(myBet);
   }
+
+
+  static castRankToNumber(rank){
+    switch (rank) {
+      case "A":
+        return 14;
+      case "K":
+        return 13;
+      case "Q":
+        return 12;
+      case "J":
+        return 11;
+      case "T":
+        return 10;
+      case "9":
+        return 9;
+      case "8":
+        return 8;
+      case "7":
+        return 7;
+      case "6":
+        return 6;
+      case "5":
+        return 5;
+      case "4":
+        return 4;
+      case "3":
+        return 3;
+      case "2":
+        return 2;
+    }
+  }
+
 
 
   static chanceOfthePair(ourCards){
