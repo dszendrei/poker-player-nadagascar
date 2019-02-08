@@ -93,6 +93,7 @@ class Player {
         }
 
         if (communityCards.length > 2) {
+          console.log("COMCARDS LENGT: "+communityCards.length);
           myBet = 0;
         }
       }
