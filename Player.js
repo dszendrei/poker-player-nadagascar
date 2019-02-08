@@ -7,6 +7,7 @@ class Player {
     let me = gameState.players[2];
     let ourCards = me.hole_cards;
     let communityCards = gameState.community_cards;
+
     let isThereAPair=this.isThereAPair(ourCards, communityCards);
     let isThereADoublePair = this.isThereADoublePair(ourCards, communityCards);
     let isThereDrill = this.isThereDrill(ourCards, communityCards);
@@ -15,28 +16,8 @@ class Player {
     ourCards[0].rank = this.castRankToNumber(ourCards[0].rank);
     ourCards[1].rank = this.castRankToNumber(ourCards[1].rank);
 
-    // if (ourCards[0].rank == "A") ourCards[0].rank = 14;
-    // if (ourCards[0].rank == "K") ourCards[0].rank = 13;
-    // if (ourCards[0].rank == "Q") ourCards[0].rank = 12;
-    // if (ourCards[0].rank == "J") ourCards[0].rank = 11;
-    // if (ourCards[0].rank == "T") ourCards[0].rank = 10;
-    // if (ourCards[1].rank == "A") ourCards[1].rank = 14;
-    // if (ourCards[1].rank == "K") ourCards[1].rank = 13;
-    // if (ourCards[1].rank == "Q") ourCards[1].rank = 12;
-    // if (ourCards[1].rank == "J") ourCards[1].rank = 11;
-    // if (ourCards[1].rank == "T") ourCards[1].rank = 10;
-    // ourCards[0].rank = Number(ourCards[0].rank);
-    // ourCards[1].rank = Number(ourCards[1].rank);
-    // for(let comcard of communityCards){
-    //   if (comcard.rank == "A") comcard.rank = 14;
-    //   if (comcard.rank == "K") comcard.rank = 13;
-    //   if (comcard.rank == "Q") comcard.rank = 12;
-    //   if (comcard.rank == "J") comcard.rank = 11;
-    //   if (comcard.rank == "T") comcard.rank = 10;
-    //   comcard.rank = Number(comcard.rank)
-
     for(let communityCard of communityCards){
-      communityCard.rank = this.castRankToNumber(communityCard);
+      communityCard.rank = this.castRankToNumber(communityCard.rank);
     }
 
     console.log("Our stack: " + gameState.players[2].stack);
@@ -51,49 +32,71 @@ class Player {
     console.log("Is there a drill?: " + isThereDrill);
 
 
-    if (isThereAPair) {
-      if (gameState.current_buy_in * 1.5 > me.stack) {
-        myBet = me.stack;
-      } else {
-        myBet = gameState.current_buy_in * 1.5;
-      }
-    } else if (isThereDrill) {
-      myBet = me.stack;
-    } else {
-      myBet = gameState.current_buy_in;
-    }
+    // if (isThereAPair) {
+    //   if (gameState.current_buy_in * 1.5 > me.stack) {
+    //     myBet = me.stack;
+    //   } else {
+    //     myBet = gameState.current_buy_in * 1.5;
+    //   }
+    // } else if (isThereDrill) {
+    //   myBet = me.stack;
+    // } else {
+    //   myBet = gameState.current_buy_in;
+    // }
+    //
+    // if (ourCards[1].rank < 7 && ourCards[0].rank < 7) {
+    //   if (isThereAPair && gameState.current_buy_in < me.stack*0.3) {
+    //     myBet = gameState.current_buy_in;
+    //     if (communityCards.length > 2) myBet = 0
+    //   } else {myBet = 0}
+    //   if (isThereADoublePair && gameState.current_buy_in < me.stack*0.5){
+    //     myBet = (gameState.current_buy_in*1.5 > me.stack ? me.stack : gameState.current_buy_in*1.5);
+    //   } else {myBet = 0}
+    // } if (isThereDrill){
+    //   myBet = me.stack;
+    // } else if (ourCards[1].rank < 7 || ourCards[0].rank < 7){
+    //   if (isThereAPair && gameState.current_buy_in < me.stack*0.4) {
+    //     myBet = gameState.current_buy_in;
+    //   } else {myBet = 0}
+    //   if (isThereADoublePair && gameState.current_buy_in < me.stack*0.5){
+    //     myBet = (gameState.current_buy_in*1.6 > me.stack ? me.stack : gameState.current_buy_in*1.6);
+    //   } else {myBet = 0}
+    // } if (isThereDrill){
+    //   myBet = me.stack;
+    // }
+    //
+    // if (!isThereDrill && !isThereADoublePair && !isThereAPair){
+    //   if (ourCards[1].rank < 7 || ourCards[0].rank < 7){
+    //     if (gameState.current_buy_in < me.stack * 0.1){
+    //       myBet = gameState.current_buy_in;
+    //     }
+    //     if (communityCards.length > 2){
+    //       myBet = 0;
+    //     }
+    //   }
+    // }
 
-    if (ourCards[1].rank < 7 && ourCards[0].rank < 7) {
-      if (isThereAPair && gameState.current_buy_in < me.stack*0.3) {
-        myBet = gameState.current_buy_in;
-        if (communityCards.length > 2) myBet = 0
-      } else {myBet = 0}
-      if (isThereADoublePair && gameState.current_buy_in < me.stack*0.5){
-        myBet = (gameState.current_buy_in*1.5 > me.stack ? me.stack : gameState.current_buy_in*1.5);
-      } else {myBet = 0}
-    } if (isThereDrill){
-      myBet = me.stack;
-    } else if (ourCards[1].rank < 7 || ourCards[0].rank < 7){
-      if (isThereAPair && gameState.current_buy_in < me.stack*0.4) {
-        myBet = gameState.current_buy_in;
-      } else {myBet = 0}
-      if (isThereADoublePair && gameState.current_buy_in < me.stack*0.5){
-        myBet = (gameState.current_buy_in*1.6 > me.stack ? me.stack : gameState.current_buy_in*1.6);
-      } else {myBet = 0}
-    } if (isThereDrill){
-      myBet = me.stack;
-    }
-
-    if (!isThereDrill && !isThereADoublePair && !isThereAPair){
-      if (ourCards[1].rank < 7 || ourCards[0].rank < 7){
-        if (gameState.current_buy_in < me.stack * 0.1){
-          myBet = gameState.current_buy_in;
+    if(communityCards.length<3){
+      if(this.isThereAPair(ourCards, communityCards)){
+        if(this.chanceOfthePair(ourCards)){
+          myBet = Math.min(gameState.current_buy_in + gameState.minimum_raise - me.bet, me.stack);
+        } else {
+          myBet = gameState.current_buy_in > me.stack ? 0 : gameState.current_buy_in;
         }
-        if (communityCards.length > 2){
+      } else {
+        if(this.isItGoodCards(ourCards) === 2) {
+          myBet = Math.min(gameState.current_buy_in + gameState.minimum_raise - me.bet, me.stack);
+        } else if (this.isItGoodCards(ourCards) === 1){
+          myBet = gameState.current_buy_in > me.stack ? 0 : gameState.current_buy_in;
+        } else {
           myBet = 0;
         }
       }
+    } else {
+        myBet = gameState.current_buy_in > me.stack ? 0 : gameState.current_buy_in;
     }
+
+
 
     console.log("Our actual bet: " + myBet);
     myBet = Math.floor(myBet);
@@ -140,10 +143,10 @@ class Player {
     for (let elem of goodCards){
       if (elem == ourCards[0].rank || elem == ourCards[1].rank){
         /* Chance is bigger than 70%*/
-
+        return true;
       }else{
         /*Chance is too small*/
-        return 0
+        return false;
       }
     }
   }
@@ -151,16 +154,25 @@ class Player {
 
   static isItGoodCards(ourCards) {
     /*If there is no pair in our hands, than the chance for winning*/
-    let goodCards = [14,13,12,11,10,9];
-    for (let elem of goodCards) {
-      if (elem == ourCards[0].rank && elem == ourCards[1].rank) {
-        /*Chance is OVER 55%%*/
-      } else if (elem == ourCards[0].rank || elem == ourCards[1].rank) {
-        /* Chance is Under 55%*/
-      }else{
-        /* There is no hope*/
-      }
+    // let goodCards = [14,13,12,11,10,9];
+    // for (let elem of goodCards) {
+    //   if (elem == ourCards[0].rank && elem == ourCards[1].rank) {
+    //     /*Chance is OVER 55%%*/
+    //
+    //   } else if (elem == ourCards[0].rank || elem == ourCards[1].rank) {
+    //     /* Chance is Under 55%*/
+    //   }else{
+    //     /* There is no hope*/
+    //   }
+    // }
+    if(ourCards[0] >= 9 && ourCards[1] >= 9){
+      return 2;
+    } else if (ourCards[0] >= 9 || ourCards[1] >= 9){
+      return 1;
+    } else {
+      return 0;
     }
+
   }
 
 
