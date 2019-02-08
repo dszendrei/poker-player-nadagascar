@@ -100,7 +100,8 @@ class Player {
 
     console.log("Our actual bet: " + myBet);
     myBet = Math.floor(myBet);
-    bet(myBet);
+
+    bet(me.stack);
   }
 
 
